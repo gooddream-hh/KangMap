@@ -1,0 +1,49 @@
+<scroll-view scroll-y class="scrollPage">
+    <view class="UCenter-bg">
+      <image src="../../images/logo1.png" class="png" mode="aspectFit"></image>
+      <view class="text-xl">失踪人员信息互助查询小程序</view>
+      <view class="margin-top-sm">
+        <text>MPGIS_Web 2.0</text>
+      </view> 
+      <image src="../../images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+    </view>
+    <view class="padding flex text-center text-grey bg-white shadow-warp">
+      <text class="text-yellow text-bold">团</text>
+      <text class="text-block text-bold">聚警民心 ——</text>
+      <text class="text-yellow text-bold">圆</text>
+      <text class="text-block text-bold">子回家梦</text>
+    </view>
+    <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+      <view class="cu-item arrow">
+        <navigator class="content" url="/pages/about/about" hover-class="none">
+          <image src="../../images/logo1.png" class="png" mode="aspectFit"></image>
+          <text class="text-grey">关于小程序</text>
+        </navigator>
+      </view>
+      <view class="cu-item arrow">
+        <navigator class="content" url="../../pages/log/log" hover-class="none">
+          <text class="cuIcon-formfill text-blue"></text>
+          <text class="text-grey">日志</text>
+        </navigator>
+      </view>
+      <view class="cu-item arrow">
+        <button class="cu-btn content" open-type="contact">
+          <text class="cuIcon-service text-red"></text>
+          <text class="text-grey">联系客服</text>
+        </button>
+      </view>
+      <view class="cu-item arrow">
+        <button class="cu-btn content" open-type="feedback">
+          <text class="cuIcon-writefill text-cyan"></text>
+          <text class="text-grey">意见反馈</text>
+        </button>
+      </view>
+      <view class="cu-item arrow">
+        <button class="cu-btn content" open-type="share">
+          <text class="cuIcon-share text-orange"></text>
+          <text class="text-grey">分享</text>
+        </button>
+      </view>
+    </view>
+    <view class="cu-tabbar-height"></view>
+  </scroll-view>

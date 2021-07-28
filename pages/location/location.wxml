@@ -1,0 +1,70 @@
+<view wx:if="{{addListShow}}">
+  <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">搜索地址</view>
+  </cu-custom>
+  <view class="cu-bar_search_bg-white">
+    <!-- <image class="Icon" src="../../icon/back.png" bindtap="back1"></image> -->
+    <view class="search-form_round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="请输入地址" confirm-type="search" bindinput="getsuggest"></input>
+    </view>
+    <view class="action" bindtap="chooseCity">
+      <text>{{currentRegion.district}}</text>
+      <text class="cuIcon-triangledownfill"></text>
+    </view>
+  </view>
+  <!--关键词输入提示列表渲染-->
+  <view class="add-list-box">
+    <scroll-view class="add-list" scroll-y>
+      <view class="add-item" wx:for="{{suggestion}}" wx:key="index">
+        <!--绑定回填事件-->
+        <view bindtap="backfill" id="{{index}}" data-name="{{item.title}}">
+          <!--根据需求渲染相应数据-->
+          <!--渲染地址title-->
+          <view class="title">{{item.title}}</view>
+          <!--渲染详细地址-->
+          <view class="add">{{item.addr}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!--省份、城市、区列表选择-->
+<view class="region-box" wx:if="{{chooseCity}}">
+  <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">城市选择</view></cu-custom> 
+  <view class="region-top">
+    <view class="region-back" bindtap="back1">
+      <!-- <cover-image src="../../icon/back.png"></cover-image> -->
+    </view>
+    <view class="title">选择城市</view>
+  </view>
+  <view class="region-tabs">
+    <text class="tab" bindtap="showProvince">{{currentProvince}}</text>
+    <text class="tab" bindtap="showCity" wx:if="{{!regionShow.province}}" bindtap="showCity">{{currentCity}}</text>
+    <text class="tab" bindtap="showDistrict" wx:if="{{regionShow.district}}" bindtap="showDistrict">{{currentDistrict}}</text>
+  </view>
+  <scroll-view scroll-y style="height:1050rpx;">
+    <view class="region-list" wx:if="{{regionShow.province}}">
+      <view class="region-item" wx:for="{{regionData.province}}" wx:key="index">
+        <view data-id="{{item.id}}" data-name="{{item.fullname}}" bindtap="selectProvince">
+          <text>{{item.fullname}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="region-list" wx:if="{{regionShow.city}}">
+      <view class="region-item" wx:for="{{regionData.city}}" wx:key="index">
+        <view data-id="{{item.id}}" data-name="{{item.fullname}}" bindtap="selectCity">
+          <text>{{item.fullname}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="region-list" wx:if="{{regionShow.district}}">
+      <view class="region-item" wx:for="{{regionData.district}}" wx:key="index">
+        <view data-id="{{item.id}}" data-name="{{item.fullname}}" data-latitude="{{item.location.lat}}" data-longitude="{{item.location.lng}}" bindtap="selectDistrict">
+          <text>{{item.fullname}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

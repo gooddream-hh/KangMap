@@ -1,0 +1,95 @@
+<view wx:if="{{!addListShow && !chooseCity}}">
+  <cu-custom bgColor="bg-gradual-blue">
+    <view slot="content">MAP</view>
+  </cu-custom>
+  <!--地图容器-->
+  <map id="myMap" style="width:100%;height:90vh;" longitude="{{longitude}}" show-location="true" latitude="{{latitude}}"
+    scale="{{scale}}" bindregionchange="mapChange" markers="{{markers}}" bindmarkertap="markertap"
+    bindcallouttap="callouttap">
+    <!-- <view class="itemList"> -->
+    <view class="top">
+      <view class="search-box">
+        <!--<view class="region" bindtap="chooseCity">{{currentRegion.district}}</view>-->
+        <image class="Icon" src="../../icon/search.png"></image>
+        <view class="placeholder" bindtap="jumpSearch">请输入名字</view>
+        <view class="shu"></view>
+        <view class="name-btn" bindtap="showModal" data-target="{{drawer? 'false' : 'true'}}">搜索类型</view>
+        <view class="{{drawer ? 'state-arrow-open' : ''}}">▼</view>
+        <!-- <image class="Icon" src="../../icon/triangle_down_fill.png"></image> -->
+        <!-- <view class="placeholder" bindtap="showAddList">请输入地址</view> -->
+      </view>
+    </view>
+    <!--打开抽屉列表-->
+    <view class="list-item-bd {{drawer ? 'list-item-bd-show' : ''}}">
+      <view class="option-box {{drawer ? 'option-box-show' : ''}}">
+        <!-- 子选项 -->
+        <view class="option">
+          <view class="option-text" bindtap="showAddList">搜索地址▶</view>
+        </view>
+        <view class="option">
+          <view class="option-text" bindtap="jumpSearch">搜索名字▶</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="left">
+      <view class="search" bindtap="clickSwitch" data-target="DrawerModalL">
+        <image class="Icon" src='../../icon/switch.png'></image>
+        <view class="font">切换</view>
+      </view>
+    </view>
+    <view class="right">
+      <view class="search" bindtap="chooseCity">
+        <image class="Icon" src="../../icon/city.png"></image>
+        <view class="font">区域</view>
+      </view>
+      <view class="search" bindtap="doLocation">
+        <image class="Icon" src='../../icon/radiobox.png'></image>
+        <view class="font">定位</view>
+      </view>
+      <view class="doScale">
+        <image class="Icon" src='../../icon/add.png' bindtap="addScale"></image>
+        <image class="Icon" src='../../icon/minus.png' bindtap="minusScale"></image>
+      </view>
+    </view>
+  </map>
+  <view class="cu-modal {{modalName=='DrawerModalL'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">查看历史信息</view>
+        <view class="action" bindtap="hideModal">
+          <view class="cuIcon-close text-red"></view>
+        </view>
+      </view>
+      <view class="padding-xl">
+        包含已经找回的人信息,由于数据太大和小程序受限,第一次加载数据较长，请耐心等待
+      </view>
+      <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+          <button class="cu-btn bg-green margin-left" bindtap="sureSwitch">确定</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-modal {{modalName=='ModalL'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">温馨提示</view>
+        <view class="action" bindtap="hideModal">
+          <view class="cuIcon-close text-red"></view>
+        </view>
+      </view>
+      <view class="padding-xl">
+        此人是已经找回的,如果要查看详细信息和标记需要切换为历史数据
+      </view>
+      <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn line-green text-blue" bindtap="hideModal">取消</button>
+          <button class="cu-btn bg-blue margin-left" bindtap="dialogSwitch">确定</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

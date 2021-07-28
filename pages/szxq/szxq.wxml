@@ -1,0 +1,30 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">失踪人员信息</view></cu-custom>
+<view class="outbox">
+  <view class="essInfo">
+    <swiper style="width:60%;height: 180px" indicator-dots="true" indicator-active-color="#91cdf0" 
+      autoplay="true" interval="5000" duration="500">
+        <swiper-item wx:for="{{imgUrls}}" wx:key>
+          <image data-src="{{item}}" bindtap='previewImage' style='width:100%;height:100%' mode='aspectFill' src="{{item}}" class="slide-image"/>
+        </swiper-item>
+    </swiper>
+    <view class="text">
+      <view class="info_name">姓名：{{szry_name}}</view>
+      <view class="info_age">走失年龄：{{szry_age}}</view>
+      <view class="info_sex">性别： {{szry_sex}}</view>
+      <view class="info_misstime">走失时间：{{szry_misstime}}</view>
+    </view>
+  </view>
+
+  <view class="detInfo">
+    <view class="info_resultCase">
+     <txet class="text-black">●结果:</txet>
+     <view class="soild-bottom text-df padding">{{szry_resultCase}}</view>
+    </view>
+    <view class="szry_detailCase">
+      <text class="text-black">●详细情况:</text>
+      <view class="soild-bottom text-df padding">{{szry_detailCase}}</view>
+    </view>
+  </view>
+
+
+</view>

@@ -1,0 +1,44 @@
+<!--pages/recognition/recognition.wxml-->
+<cu-custom bgColor="bg-gradual-blue" ><view slot="content">识别</view></cu-custom>
+
+<view class="background">
+  <view class="form">
+     <view class="img-item">
+      <image src="{{photos}}" mode="aspectFill"></image>
+     </view>
+  </view>
+    <view class="btn">
+      <button class="cu-btn round button-hover" size="mini" bindtap="chooseImg" >选择照片</button>
+      <button class="cu-btn round button-hover" size="mini" bindtap="uploadImg">查询匹配</button>
+    </view>
+  <view class="allResult" >
+    <view class="haveResult" wx:if="{{result&&recognition}}">
+      <view class="resultq" wx:for="{{arr}}" wx:key="index">
+        <view class="result" bindtap="popModal" id="{{index}}"> 
+          <view class="name">{{item.name}}</view>
+          <view class="similarity">相似程度:{{item.similarity}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="noResult" wx:if="{{!result&&recognition}}">
+      暂无相关信息
+    </view>
+  </view>
+  <view class="modal-mask" bindtap="hidepopup"  wx:if="{{showModal}}"></view>
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="topPart">
+      <image class='view-image' src="{{'http://img.ilocstudio.top/mpgis/photos/'+ infoArr[id].pic_name}}" mode="aspectFill"></image> 
+      <view class="textPart">
+        <view class="text-black">姓名:{{infoArr[id].name}}</view>
+        <view class="text-black">走失时间:{{infoArr[id].sz_time}}</view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" style="width: 100%; height: 200rpx;" class="middenPart">
+      <view class="padding">{{infoArr[id].sz_case}}</view>
+      </scroll-view>
+    <view class="bottomPart">
+      <view class="b-title-left" bindtap='hidepopup'>我知道了</view>
+      <view class="b-title-rigth" bindtap="backfill">去地图看看</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">搜索</view></cu-custom>
+<!--自定义搜索框-->
+<view class="cu-bar bg-white search fixed" style="top:145rpx;">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" bindinput="getsuggest" placeholder="请输入姓名" confirm-type="search"value="{{inputValue}}"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-gradual-blue shadow-blur round" bindtap="handleSearch" size="mini">搜索</button>
+  </view>
+</view>
+<!--列表-->
+<view wx:if="{{haveData}}">
+  <scroll-view class="name-list" scroll-y>
+    <view class="item" wx:for="{{infoList}}" wx:key="index">
+      <view bindtap="backfill" id="{{index}}" data-name="{{item.name}}">
+      <!--渲染姓名-->
+      <view class="name">{{item.title}}</view>
+      <!--渲染地址-->
+      <view class="add">{{item.addr}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<view wx:if="{{!haveData}}">
+  <view class="noData">
+   <view class="content">暂时没有您想要的数据</view>
+  </view>
+</view>
+

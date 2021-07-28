@@ -1,0 +1,12 @@
+<!--pages/about/about.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">关于</view></cu-custom>
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>关于小程序</view>
+  <view class='text-content'>
+    <view>欢迎使用失踪人员信息互助查询小程序！</view>
+    <view class='margin-top-sm'>技术点1:小程序利用GIS可视化技术将失踪儿童显示在地图上</view>
+    <view class='margin-top-sm'>技术点2:可以通过计算机人脸识别技术匹配相似的丢失儿童</view>
+    <view class='margin-top-sm'>希望通过本小程序可以让更多的走失儿童可以回家,圆走失儿童回家梦</view>
+    <view class='margin-top-sm'>更多功能敬请期待！</view>
+  </view>
+</view>
